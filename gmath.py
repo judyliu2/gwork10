@@ -10,6 +10,7 @@ SPECULAR_EXP = 4
 
 #lighting functions
 def get_lighting(normal, view, ambient, light, areflect, dreflect, sreflect ):
+    #ambiet = alight
     pass
 
 def calculate_ambient(alight, areflect):
@@ -19,7 +20,9 @@ def calculate_diffuse(light, dreflect, normal):
     light * dreflect * dot_product(normalize(light), normal)
 
 def calculate_specular(light, sreflect, view, normal):
-    pass
+    light * sreflect *
+    ( dot_product(2 * dot_product(normal, normalize(light))* normal
+                             - light), view)**3 
 
 def limit_color(color):
     pass
@@ -27,9 +30,9 @@ def limit_color(color):
 #vector functions
 def normalize(vector):
     magnitude = sqrt(vector[0]**2 + vector[1]**2 + vector[2]**2)
-    vector[0] /= magnitude
-    vector[1] /= magnitude
-    vector[2] /= magnitude
+    vector[0] = int(vector[0]/magnitude)
+    vector[1] = int(vector[1]/magnitude)
+    vector[2] = int(vector[2]/magnitude)
 
 
 def dot_product(a, b):
