@@ -1,4 +1,5 @@
 import math
+from matrix import *
 from display import *
 
 AMBIENT = 0
@@ -10,22 +11,30 @@ SPECULAR_EXP = 4
 
 #lighting functions
 def get_lighting(normal, view, ambient, light, areflect, dreflect, sreflect ):
-    #ambiet = alight
-    pass
+    return limit_color(calculate_ambient(ambient, areflect) +
+    calculate_diffuse(light, dreflect, normal) +
+    calculate_specular(light, sreflect, view, normal))
 
+#each should return [r,g,b]
 def calculate_ambient(alight, areflect):
     return alight * areflect
 
 def calculate_diffuse(light, dreflect, normal):
-    light * dreflect * dot_product(normalize(light), normal)
+    DIFFUSE * dreflect * dot_product(normalize(light), normal)
 
 def calculate_specular(light, sreflect, view, normal):
-    light * sreflect *
-    ( dot_product(2 * dot_product(normal, normalize(light))* normal
-                             - light), view)**3 
+    SPECULAR * sreflect * ( dot_product(
+        2 * dot_product(normal, normalize(light)) *
+        normal - light), view) ** SPECULAR_EXP 
 
 def limit_color(color):
-    pass
+    i = 0
+    while (i < len(color)): 
+        if (color <= 255 and color >= 0):
+            return
+        else:
+            color = 0
+        i+=1
 
 #vector functions
 def normalize(vector):
