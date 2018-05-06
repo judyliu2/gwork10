@@ -11,10 +11,10 @@ view = [0,
 ambient = [50,
            50,
            50]
-light = [[0.5,
+light = [[0.5, #light[0] = (L) direction from a point to light source
           0.75,
           1],
-         [0,
+         [0, #light[1] = (P) light color 
           255,
           255]]
 areflect = [0.1,
